@@ -1,8 +1,6 @@
+import java.awt.HeadlessException;
 import javax.swing.*;
-import com.toedter.calendar.JCalendar;
-import com.toedter.calendar.JDateChooser;
 import java.time.LocalDate;
-import java.time.YearMonth;
 import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
@@ -28,7 +26,6 @@ public class PenghitungHariForm extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -46,9 +43,13 @@ public class PenghitungHariForm extends javax.swing.JFrame {
         fieldHariPertama = new javax.swing.JTextField();
         fieldHariTerakhir = new javax.swing.JTextField();
         fieldSelisih = new javax.swing.JTextField();
+        jPanel5 = new javax.swing.JPanel();
+        btnHapus = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Aplikasi Penghitung Hari");
+        setPreferredSize(new java.awt.Dimension(1000, 630));
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
@@ -60,17 +61,6 @@ public class PenghitungHariForm extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jPanel2.setLayout(new java.awt.GridBagLayout());
-
-        jButton1.setText("Hitung");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        jPanel2.add(jButton1, gridBagConstraints);
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Jumlah Hari :");
@@ -212,6 +202,46 @@ public class PenghitungHariForm extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel2.add(fieldSelisih, gridBagConstraints);
 
+        btnHapus.setText("Hapus");
+        btnHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Hitung");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addComponent(btnHapus))
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(26, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnHapus)
+                .addContainerGap())
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        jPanel2.add(jPanel5, gridBagConstraints);
+
         jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -265,10 +295,28 @@ public class PenghitungHariForm extends javax.swing.JFrame {
         fieldHariPertama.setText(startLocalDate.getDayOfWeek().toString());
         fieldHariTerakhir.setText(endLocalDate.getDayOfWeek().toString());
 
-    } catch (Exception e) {
+    } catch (HeadlessException e) {
         JOptionPane.showMessageDialog(this, "Terjadi kesalahan saat menghitung hari!", "Error", JOptionPane.ERROR_MESSAGE);
     }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
+        // Reset ComboBox ke bulan pertama (Januari)
+    jComboBox1.setSelectedIndex(0);
+
+    // Reset Spinner ke tahun sekarang
+    int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+    jSpinner1.setValue(currentYear);
+
+    // Reset JDateChooser dan JCalendar
+    jDateChooser1.setDate(null);
+
+    // Kosongkan semua field output
+    fieldHari.setText("");
+    fieldHariPertama.setText("");
+    fieldHariTerakhir.setText("");
+    fieldSelisih.setText("");
+    }//GEN-LAST:event_btnHapusActionPerformed
 
      private void updateDateChooser() {
     // Dapatkan bulan dan tahun dari ComboBox dan Spinner
@@ -321,6 +369,7 @@ public class PenghitungHariForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnHapus;
     private javax.swing.JTextField fieldHari;
     private javax.swing.JTextField fieldHariPertama;
     private javax.swing.JTextField fieldHariTerakhir;
@@ -341,6 +390,7 @@ public class PenghitungHariForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JSpinner jSpinner1;
     // End of variables declaration//GEN-END:variables
 }
