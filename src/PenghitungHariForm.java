@@ -62,6 +62,11 @@ public class PenghitungHariForm extends javax.swing.JFrame {
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
         jButton1.setText("Hitung");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -227,6 +232,43 @@ public class PenghitungHariForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         try {
+        // Ambil tanggal pertama dari jDateChooser1
+        Date startDate = jDateChooser1.getDate();
+        if (startDate == null) {
+            JOptionPane.showMessageDialog(this, "Pilih tanggal pertama!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Ambil tanggal terakhir dari jCalendar1
+        Date endDate = jCalendar1.getDate();
+        if (endDate == null) {
+            JOptionPane.showMessageDialog(this, "Pilih tanggal terakhir!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Konversi Date ke LocalDate
+        LocalDate startLocalDate = startDate.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate();
+        LocalDate endLocalDate = endDate.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate();
+
+        // Hitung jumlah hari antara kedua tanggal (termasuk tanggal pertama)
+        long daysBetween = ChronoUnit.DAYS.between(startLocalDate, endLocalDate) + 1;
+        fieldHari.setText(String.valueOf(daysBetween));
+
+        // Hitung selisih hari (tidak termasuk tanggal pertama dan terakhir)
+        long dayDifference = ChronoUnit.DAYS.between(startLocalDate, endLocalDate);
+        fieldSelisih.setText(String.valueOf(dayDifference));
+
+        // Tampilkan informasi hari pertama dan terakhir
+        fieldHariPertama.setText(startLocalDate.getDayOfWeek().toString());
+        fieldHariTerakhir.setText(endLocalDate.getDayOfWeek().toString());
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Terjadi kesalahan saat menghitung hari!", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
      private void updateDateChooser() {
     // Dapatkan bulan dan tahun dari ComboBox dan Spinner
