@@ -42,6 +42,8 @@ public class PenghitungHariForm extends javax.swing.JFrame {
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jPanel4 = new javax.swing.JPanel();
         jCalendar1 = new com.toedter.calendar.JCalendar();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Aplikasi Penghitung Hari");
@@ -57,25 +59,25 @@ public class PenghitungHariForm extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Hitung");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 0;
         jPanel2.add(jButton1, gridBagConstraints);
 
-        jLabel5.setText("jLabel5");
+        jLabel5.setText("Jumlah Hari");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         jPanel2.add(jLabel5, gridBagConstraints);
 
-        jLabel6.setText("jLabel6");
+        jLabel6.setText("Hari Pertama Dalam Bulan");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         jPanel2.add(jLabel6, gridBagConstraints);
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Input Hari Awal", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 0, 12))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Input Hari Pertama"));
         jPanel3.setPreferredSize(new java.awt.Dimension(418, 259));
         jPanel3.setLayout(new java.awt.GridBagLayout());
 
@@ -109,7 +111,7 @@ public class PenghitungHariForm extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel3.add(jLabel3, gridBagConstraints);
 
-        jLabel4.setText("jLabel4");
+        jLabel4.setText("Pilih Hari");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -128,10 +130,9 @@ public class PenghitungHariForm extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
         jPanel2.add(jPanel3, gridBagConstraints);
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Input Hari Akhir"));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Input Hari Terakhir"));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -154,7 +155,16 @@ public class PenghitungHariForm extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        jPanel2.add(jPanel4, new java.awt.GridBagConstraints());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        jPanel2.add(jPanel4, gridBagConstraints);
+
+        jLabel7.setText("Selisih Hari");
+        jPanel2.add(jLabel7, new java.awt.GridBagConstraints());
+
+        jLabel8.setText("Hari Terakhir Dalam Bulan");
+        jPanel2.add(jLabel8, new java.awt.GridBagConstraints());
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
 
@@ -223,6 +233,8 @@ public class PenghitungHariForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
