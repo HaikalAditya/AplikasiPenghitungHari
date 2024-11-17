@@ -49,7 +49,6 @@ public class PenghitungHariForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Aplikasi Penghitung Hari");
-        setPreferredSize(new java.awt.Dimension(1000, 630));
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
